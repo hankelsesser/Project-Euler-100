@@ -15,7 +15,7 @@ import math, time
 def abundant_nums():
     numbers = []
     for x in range(1, 28124):
-        #if x%1000==0:print(x)
+        #if x%1000==0:print(x) 
         divisors = []
         if x%2==0:
             for i in range(1,math.ceil(x/2)+1):
@@ -38,11 +38,16 @@ print("getting abundant sums...")
 abundant_sums = []
 for i in range(len(abundant_numbers)):
     print(100*(i/len(abundant_numbers)))
-    for num2 in abundant_numbers:
-        sum = abundant_numbers[i]+num2
-        if sum > 28124: break
+    last = 0
+    for n in range(len(abundant_numbers)):
+        last = n
+        sum = abundant_numbers[i]+abundant_numbers[n]
+        if sum > 28124:
+            print("break:", n)
+            break
         if sum not in abundant_sums:
             abundant_sums.append(sum)
+    print("last n:", last)
 
 print("getting final list of numbers...")
 sum = 0
