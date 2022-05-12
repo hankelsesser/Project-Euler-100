@@ -4,7 +4,7 @@
 # If all of the permutations are listed numerically or alphabetically, we call it lexicographic order. 
 # The lexicographic permutations of 0, 1 and 2 are:
 
-# 012   021   102   120   201   210
+# 012   021   102   120   201   210 
 
 # What is the millionth lexicographic permutation of the digits 0, 1, 2, 3, 4, 5, 6, 7, 8 and 9?
 import math
@@ -14,19 +14,28 @@ def get_nth_permutation(og_num, n):
     result = []
     for i in range(length): result.append("X")
 
+    possible_charcters = []
+    for num in og_num: possible_charcters.append(num)
 
-    # for d in range(length):
-    #     result[d] = og_num[math.floor((n-1)/math.factorial(length-d-1))]
+    prev_index = 0
+    for d in range(length):
+        n -= int(prev_index) * math.factorial(length-d)
+        digit = possible_charcters[math.floor((n-1)/(math.factorial(length-(d+1))))]
+        prev_index = possible_charcters.index(digit)
+        possible_charcters.remove(digit)
+        result[d] = digit
+
+    result_str = ""
+    for letter in result: result_str += letter
+    return (result_str)
 
 
-    result[0]= og_num[math.floor((n-1)/(math.factorial(length-1)))]
-    result[1]= og_num[math.floor((n-1)/(math.factorial(length-2)))]
+number = "01234567"
+n = 823
 
-    return (result)
+print(get_nth_permutation(number, n))
 
-
-# number = "0123456789"
-# n = 1000000
-
-for i in range(1,7):
-    print(get_nth_permutation("012",i))
+# number = "01234"
+# for i in range(1,math.factorial(len(number))+1):
+#     print(get_nth_permutation(number,i))
+#     #get_nth_permutation("0123", i)
