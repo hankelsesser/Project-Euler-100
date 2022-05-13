@@ -68,13 +68,18 @@ def main(domain):
                                                                                 if c+g+k+o == target:
                                                                                     for p in range(domain[0],domain[1]+1):
                                                                                         if m+n+o+p == target and a+f+k+p == target and d+h+l+p == target: 
+                                                                                            valid_grids.append([
+                                                                                                [a, b, c, d],
+                                                                                                [e, f, g, h],
+                                                                                                [i, j, k, l],
+                                                                                                [m, n, o, p]
+                                                                                            ])
                                                                                             num += 1
     return num
 
+main([0, 2])
+print(len(valid_grids))
+for i in [207, 414]:
+    show(i, valid_grids[i-1])
 
-# for i in range(len(valid_grids)):
-#     show(i+1, valid_grids[i])
-
-for i in range(0, 100):
-    print(i+1, main([0,i]))
 
