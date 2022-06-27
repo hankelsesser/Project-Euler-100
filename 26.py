@@ -22,7 +22,7 @@ def check_recusion(float):
         for d in range(1, len(digits)):
             if digits[d] == first:
                 if len(digits) < 2*d: digits = get_more_digits(float, digits, 2*d - len(digits))
-                for i in range(0, 4)
+                for i in range(0, 4):pass
 
 
             
